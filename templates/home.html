@@ -17,17 +17,23 @@
 		<div id="map"></div>
 	</div>
 
-	<script src="//ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.0/jquery.min.js"></script>
 	<script type="text/javascript" src="http://maps.stamen.com/js/tile.stamen.js?v1.3.0"></script>
 	<script src="https://unpkg.com/leaflet@1.5.1/dist/leaflet.js"
 	   integrity="sha512-GffPMF3RvMeYyc1LWMHtK8EbPv0iNZ8/oTtHPx9/cc2ILxQ+u905qIwdpULaqDkyBKgOaB57QTMg7ztg8Jm2Og=="
 	   crossorigin=""></script>
 
-	<script type="text/javascript">
+	<script type="text/javascript" src="{{ url_for('static', filename = 'main.js') }}"></script>
+
+	<!-- <script type="text/javascript">
 		
 		neighborhood_geo = ({{ neighborhood_geo|tojson }});
 
+		flu_shot_locations = ({{ flu_shot_locations|tojson }});
+
 		var map = L.map('map').setView([41.881832, -87.623177], 12);
+
+		// create base layer
 
 	    var Stamen_Terrain = L.tileLayer('https://stamen-tiles-{s}.a.ssl.fastly.net/terrain/{z}/{x}/{y}.{ext}', {
 	       attribution: 'Stamen',
@@ -38,6 +44,8 @@
 
 	    map.addLayer(Stamen_Terrain);
 
+	    // create neighborhood layer
+
 	    function style(feature) {
 	    	return {
 	    		fillColor: '#027192',
@@ -47,7 +55,7 @@
 	    		dashArray: '3',
 	    		fillOpacity: 0.5
 	    	};
-	    }
+	    };
 
 	    function highlightFeature(e) {
 	    	var layer = e.target;
@@ -62,12 +70,12 @@
 	    	if (!L.Browser.ie && !L.Browser.opera && !L.Browser.edge) {
 	    		layer.bringToFront();
 	    	}
-	    }
+	    };
 
 	    function resetHighlight(e) {
 	    	console.log("fired");
-	    	geojson.resetStyle(e.target);
-	    }
+	    	neighborhoods_layer.resetStyle(e.target);
+	    };
 
 	    function onEachFeature(feature, layer) {
 	    	if (feature.properties && feature.properties.pri_neigh){
@@ -78,14 +86,36 @@
 	    		mouseover: highlightFeature,
 	    		mouseout: resetHighlight,
 	    	});
-	    }
+	    };
 
-	    geojson = L.geoJSON(neighborhood_geo,
+	    neighborhoods_layer = L.geoJSON(neighborhood_geo,
 	    	{	
 	    		style: style,
 	    		onEachFeature: onEachFeature
 	    	}).addTo(map);
-	</script>
+
+	    // create ride share layer
+
+	    flu_shot_locations_layer = L.geoJSON(
+	    	flu_shot_locations
+	    	).addTo(map);
+
+	    console.log(flu_shot_locations);
+
+	    // create map layers
+
+	    baseMap = {
+	    	"terrain": Stamen_Terrain
+	    };
+
+	    overlayMaps = {
+	    	"flu_shot_locations": flu_shot_locations_layer,
+	    	"neighborhoods": neighborhoods_layer
+	    };
+
+	    L.control.layers(baseMap, overlayMaps).addTo(map);
+
+	</script> -->
 
 	{% endblock %}
 </body>
