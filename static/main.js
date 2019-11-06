@@ -24,20 +24,20 @@ $(function(){
         });
     }
 
-	$.ajax({
-        url: 'http://localhost:5000/get_neighborhoods',
-        success: create_neighborhood_layer,
-        error: function(error){
-        	console.log(error)
-        }
-    });
+    function get_other_data(){
+    	$.ajax({
+            url: 'http://localhost:5000/get_neighborhoods',
+            success: create_neighborhood_layer,
+            error: function(error){
+            	console.log(error)
+            }
+        });
+    }
 
-    // create layers
 
     // create neighborhood layer
 
     function create_neighborhood_layer(result) {
-    	console.log('neighborhoods_layer');
 
         // neighborhood layer style
 
@@ -89,7 +89,7 @@ $(function(){
 				onEachFeature: onEachFeature
 			}).addTo(map);
 
-        return neighborhoods_layer
+        create_map_layers(neighborhoods_layer);
     };
 
 
@@ -100,23 +100,8 @@ $(function(){
 		).addTo(map);
     };
 
-    // function trigger_map_layer_creation(){
 
-    //     if (neighborhoods_layer == true) {
-    //         create_map_layers()
-    //     }
-
-    //     else {
-    //         trigger_map_creation()
-    //     }
-    // };
-
-    function create_map_layers(){
-
-        var neighborhoods_layer = get_neighborhood_data();
-        console.log('here');
-        console.log(neighborhoods_layer);
-
+    function create_map_layers(neighborhoods_layer){
 
         baseMap = {
             "terrain": Stamen_Terrain
@@ -130,6 +115,7 @@ $(function(){
         L.control.layers(baseMap, overlayMaps).addTo(map);
     };
 
-    create_map_layers();
+    get_other_data()
+    get_neighborhood_data();
 
 });
