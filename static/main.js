@@ -9,7 +9,7 @@ $(function(){
     var map = L.map('map').setView([41.881832, -87.623177], 12);
 
     var Stamen_Terrain = L.tileLayer('https://stamen-tiles-{s}.a.ssl.fastly.net/terrain/{z}/{x}/{y}.{ext}', {
-       attribution: 'Stamen',
+       attribution: 'Map tiles by ' + '<a href="http://stamen.com">Stamen Design</a>' + ', under ' + '<a href="http://creativecommons.org/licenses/by/3.0">' + 'CC BY 3.0' + '</a>. Data by <a href="http://openstreetmap.org">OpenStreetMap</a>' + ', under' + '<a href="http://www.openstreetmap.org/copyright">ODbL</a>',
        minZoom: 0,
        maxZoom: 20,
        ext: 'jpg'
