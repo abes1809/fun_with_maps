@@ -7,29 +7,26 @@ app = Flask(__name__)
 @app.route("/")
 def home():
 
-	# pull neighborhood geometry
-	data = requests.get('https://data.cityofchicago.org/resource/y6yq-dbs2.geojson')
-	neighborhood_geo = data.json()
-
-	# pull flu shot locations
-	data = requests.get('https://data.cityofchicago.org/resource/v6vf-nfxy.geojson')
-	flu_shot_locations = data.json()
-
-
-	return render_template('home.html', neighborhood_geo=neighborhood_geo, flu_shot_locations=flu_shot_locations)
+	return render_template('home.html')
 
 @app.route('/get_neighborhoods')
 def get_neighborhoods():
 	data = requests.get('https://data.cityofchicago.org/resource/y6yq-dbs2.geojson')
-	print('TRIGGERED get neighborhoods')
 	neighborhood_geo = data.json()
 
 	return jsonify(neighborhood_geo)
 
-@app.route('/get_other_data')
-def get_other_data():
-	data = requests.get('https://data.cityofchicago.org/resource/v6vf-nfxy.geojson')
-	print('TRIGGERED flue shot locations')
-	flu_shot_locations = data.json()
+@app.route('/get_grocery_stores')
+def get_grocery_stores():
+	liquor_store_filter = "$where=UPPER(store_name) not like '%LIQUOR%'"
+	data = requests.get("https://data.cityofchicago.org/resource/53t8-wyrc.geojson?" + liquor_store_filter )
+	grocery_store_locations = data.json()
 
-	return jsonify(flu_shot_locations)
+	return jsonify(grocery_store_locations)
+
+@app.route('/get_housing_data')
+def get_housing_data():
+	data = requests.get("https://data.cityofchicago.org/resource/s6ha-ppgi.geojson")
+	housing_locations = data.json()
+
+	return jsonify(housing_locations)
