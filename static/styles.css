@@ -1,6 +1,41 @@
 #map { 
 	height: 650px; 
 }
+
+.introduction {
+	text-align: left;
+	padding: 10px 10px;
+	margin: 10px 20px;
+}
+
+
+.map-layout {
+	padding: 10px 10px;
+	margin: 10px 5px;
+}
+
+.title {
+	text-align: center;
+	padding: 10px;
+	margin: 10px;
+	font-weight: bold;
+}
+
+.subtitle {
+	margin: 20px 10px 0px 10px;
+	padding-top: 15px;
+	color: #2d2e60;
+}
+
+.questions {
+	list-style-type: none;
+}
+
+.lead{
+	font-weight:bold;
+	color: #2d2e60;
+}
+
 .legend {
 	line-height: 18px;
 	color: #555;
@@ -9,6 +44,7 @@
 	border-radius: 5px;
 	padding: 10px;
 }
+
 .legend i {
 	width: 18px;
 	height: 18px;

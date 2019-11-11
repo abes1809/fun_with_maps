@@ -1,10 +1,10 @@
 $(function(){
 
-    // to hold layers for controller
+    /** to hold layers for controller */
 
     var overlayMaps = {};
 
-    // create base map
+    /** create base map */
 
     var map = L.map('map').setView([41.881832, -87.623177], 12);
 
@@ -17,13 +17,13 @@ $(function(){
 
     map.addLayer(Stamen_Terrain);
 
-    // create map panes to set z index of layers
+    /** create map panes to set z index of layers */
 
     map.createPane("pane250").style.zIndex = 250;
     map.createPane("pane450").style.zIndex = 450;
     map.createPane("pane450_2").style.zIndex = 450;
 
-    // get layer data
+    /** get layer data */
 
 	function get_neighborhood_data(){
     	$.ajax({
@@ -55,7 +55,8 @@ $(function(){
         });
     }
 
-    // create housing layer
+    /** create housing layer */
+
     function create_housing_layer(result) {
 
         var geojsonMarkerOptions = {
@@ -87,7 +88,8 @@ $(function(){
     };
 
 
-    // create grocery store layer
+    /** create grocery store layer */
+
     function create_grocery_layer(result) {
 
         var geojsonMarkerOptions = {
@@ -118,11 +120,11 @@ $(function(){
         overlayMaps.grocery_stores = grocery_stores_layer;
     };
 
-    // create neighborhood layer
+    /** create neighborhood layer */
 
     function create_neighborhood_layer(result) {
 
-        // neighborhood layer style
+        /** neighborhood layer style */
 
         function zoomToFeature(e) {
             map.fitBounds(e.target.getBounds());
@@ -183,6 +185,7 @@ $(function(){
         create_map_layers();
     };
 
+    /** stack all map layers */
 
     function create_map_layers(){
 
@@ -197,7 +200,7 @@ $(function(){
     get_grocery_stores();
     get_housing_data()
 
-    // create legend
+    /** create legend */
 
     function getColor(layer) {
 

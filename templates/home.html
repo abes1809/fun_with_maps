@@ -1,29 +1,78 @@
 <!DOCTYPE html>
-<html>
-<head>
-	<title>Mapping Cool Stuff</title>
-	<link rel="stylesheet" href="https://unpkg.com/leaflet@1.5.1/dist/leaflet.css"
-   integrity="sha512-xwE/Az9zrjBIphAcBb3F6JVqxf46+CDLwfLMHloNu6KEQCAWi6HcDUbeOfBIptF7tcCzusKFjFw2yuvEpDL9wQ=="
-   crossorigin=""/>
-   <link rel="stylesheet" href="{{ url_for('static', filename = 'styles.css') }}">
+<html lang="en">
 
-</head>
-<body>
-	{% block content %}
-	<div>
-		<h1>Blast Off!</h1>
+	<head>
+		<title>Visualizng Chicago Resources</title>
+		<meta charset="UTF-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+		<link rel="stylesheet" href="https://unpkg.com/leaflet@1.5.1/dist/leaflet.css"
+	   integrity="sha512-xwE/Az9zrjBIphAcBb3F6JVqxf46+CDLwfLMHloNu6KEQCAWi6HcDUbeOfBIptF7tcCzusKFjFw2yuvEpDL9wQ=="
+	   crossorigin=""/>
+	   <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css" integrity="sha384-HSMxcRTRxnN+Bdg0JdbxYKrThecOKuH5zCYotlSAcp1+c8xmyTe9GYg1l9a69psu" crossorigin="anonymous">
+	   <link rel="stylesheet" href="{{ url_for('static', filename = 'styles.css') }}">
+	</head>
 
-		<div id="map"></div>
-	</div>
+	<body>
+		{% block content %}
+			<div class="container">
 
-	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.0/jquery.min.js"></script>
-	<script type="text/javascript" src="http://maps.stamen.com/js/tile.stamen.js?v1.3.0"></script>
-	<script src="https://unpkg.com/leaflet@1.5.1/dist/leaflet.js"
-	   integrity="sha512-GffPMF3RvMeYyc1LWMHtK8EbPv0iNZ8/oTtHPx9/cc2ILxQ+u905qIwdpULaqDkyBKgOaB57QTMg7ztg8Jm2Og=="
-	   crossorigin=""></script>
+				<div class="row">
 
-	<script type="text/javascript" src="{{ url_for('static', filename = 'main.js') }}"></script>
+					<div class="title">
 
-	{% endblock %}
-</body>
+						<h1>Mapping Chicago Affordable Housing Units and Grocery Stores</h1>
+
+						<div class="subtitle">
+
+							<p class="lead">Hello DataMade Team!</p>
+
+							<p>For my code challenge I chose to create an interactive map dispalying affordable housing units in Chicago next to grocery stores over the Chicago neighborhood boundries. Access to resources is something that I am very interested in and is a common theme across all areas of social justice. Mapping resources is one tool we can use to visualize this disparity and see how some of this is playing out on the ground. For this challenge, I was particularly interested to see the access folks living in affordable housing have to a basic resource - food. Some questions I had were: </p>
+								<ul class="questions">
+									<li>
+										Are affordable housing units being placed in food desserts?
+									</li>
+									<li>
+										What implications would that have for folks living in afforable housing units if so?
+									</li>
+									<li>
+										Where in the city are affordable housing units being placed and what implications might that have for that neighborhood?
+									</li>
+									<li>
+										Are there certain Chicago neighborhoods where affordable housing units are being placed more or less often? Why might this be?
+									</li>
+								</ul>
+						</div>
+					
+					</div>
+
+					<div class="col-lg-3 introduction">
+
+						<p class="lead">Using this Tool</p>
+
+						<p>You can navigate around the map by hovering over the map and clicking and dragging to see different areas of the city. You can click on a neighborhood to zoom in and see the housing units and stores there. Orange dots represent grocery stores and the grey dots are affordable housing units. Click directly on these dots to find details about the point. Filter for different layers by hovering over the grey box in the top right corner and selecting the layers you want displayed. Use the arrows in the top left corner to zoom and out of the map.</p>
+
+
+					</div>
+
+					<div class="col-lg-8 map-layout">
+
+						<div id="map"></div>
+					</div>
+
+				</div>  
+
+			</div>
+
+		<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.0/jquery.min.js"></script>
+		<script type="text/javascript" src="http://maps.stamen.com/js/tile.stamen.js?v1.3.0"></script>
+		<script src="https://unpkg.com/leaflet@1.5.1/dist/leaflet.js"
+		   integrity="sha512-GffPMF3RvMeYyc1LWMHtK8EbPv0iNZ8/oTtHPx9/cc2ILxQ+u905qIwdpULaqDkyBKgOaB57QTMg7ztg8Jm2Og=="
+		   crossorigin=""></script>
+		<script src="https://stackpath.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js" integrity="sha384-aJ21OjlMXNL5UyIl/XNwTMqvzeRMZH2w8c5cRVpzpU8Y5bApTppSuUkhZXN0VxHd" crossorigin="anonymous"></script>
+
+		<script type="text/javascript" src="{{ url_for('static', filename = 'main.js') }}"></script>
+
+		{% endblock %}
+	</body>
+
 </html>
