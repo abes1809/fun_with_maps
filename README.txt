@@ -9,7 +9,7 @@ Setup
 
 1. Clone this repository and cd into your local copy.
 
-	git clone 
+	git clone https://github.com/abes1809/fun_with_maps.git
 	cd fun_with_maps
 
 2. Create a 'virtualvenv <https://docs.python-guide.org/dev/virtualenvs/>':
