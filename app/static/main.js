@@ -27,7 +27,7 @@ $(function(){
 
 	function get_neighborhood_data(){
     	$.ajax({
-            url: 'http://localhost:5000/get_neighborhoods',
+            url: 'http://localhost:5000/neighborhoods',
             success: create_neighborhood_layer,
             error: function(error){
             	console.log(error)
@@ -37,7 +37,7 @@ $(function(){
 
     function get_grocery_stores(){
     	$.ajax({
-            url: 'http://localhost:5000/get_grocery_stores',
+            url: 'http://localhost:5000/grocery_stores',
             success: create_grocery_layer,
             error: function(error){
             	console.log(error)
@@ -47,7 +47,7 @@ $(function(){
 
     function get_housing_data(){
         $.ajax({
-            url: 'http://localhost:5000/get_housing_data',
+            url: 'http://localhost:5000/housing',
             success: create_housing_layer,
             error: function(error){
                 console.log(error)
@@ -84,7 +84,7 @@ $(function(){
         }
         ).addTo(map);
 
-        overlayMaps.affordable_housing = affordable_housing_layer;
+        overlayMaps["Affordable Housing Units"] = affordable_housing_layer;
     };
 
 
@@ -117,7 +117,7 @@ $(function(){
         }
 		).addTo(map);
 
-        overlayMaps.grocery_stores = grocery_stores_layer;
+        overlayMaps["Grocery Stores"] = grocery_stores_layer;
     };
 
     /** create neighborhood layer */
@@ -180,7 +180,7 @@ $(function(){
                 onEachFeature: onEachFeature
             }).addTo(map);
 
-        overlayMaps.neighborhoods = neighborhoods_layer;
+        overlayMaps["Neighborhoods"] = neighborhoods_layer;
 
         create_map_layers();
     };
