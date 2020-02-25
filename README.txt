@@ -1,9 +1,3 @@
-DataMade Map Coding Challenge
-===========
-
-For my DataMade code challenge I chose to create an interactive map dispalying affordable housing units in Chicago next to grocery stores over the Chicago neighborhood boundries. Access to resources is something that I am very interested in and is a common theme in social justice work. Mapping resources is one tool we can use to visualize this disparity and see how some of this is playing out on the ground.:
-
-
 Setup
 =========
 
